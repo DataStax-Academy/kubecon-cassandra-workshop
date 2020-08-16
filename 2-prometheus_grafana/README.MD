@@ -343,6 +343,9 @@ kind delete cluster --name=kind-cassandra
 
 ## Congratulations, your are done.
 
-**We love your feedback, please consider to stay with us for the Mentimeter live survey**
+**More questions? Join us!**
+
+* [Discord chat](https://bit.ly/cassandra-workshop)
+* [Q&A: community.datastax.com](https://community.datastax.com)
 
 ![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/welldone.jpg?raw=true)

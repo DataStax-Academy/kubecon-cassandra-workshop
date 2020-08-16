@@ -1,5 +1,5 @@
-KubeCon 2020: Building a DevOps Pipeline with Kubernetes and Apache Cassandra™
-======================================================
+# KubeCon 2020
+## Building a DevOps Pipeline with Kubernetes and Apache Cassandra™
 
 ![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/00-screenplay.png?raw=true)
 

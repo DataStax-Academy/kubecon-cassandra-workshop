@@ -1,19 +1,17 @@
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/00-screenplay.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/00-screenplay.png?raw=true)
 
-# Create a Kubernetes Cluster
+# Installation and Dependencies
 
-This guide will show you how to install a **Kubernetes** cluster on a single machine in order to later, deploy an Apache Cassandra™ database. It be composed of one *master* and multiple *workers*. 
-
-**IMPORTANT** If you are using our cloud test instance (like `wks78879.k8s-workshop.datastaxtraining.com`), please start with the Step 7!
+This guide will show you how to install a **Kubernetes** cluster on a single machine and prepare to deploy an Apache Cassandra™ database. It be composed of one *master* and multiple *workers*. Your computer may have already installed some of the requirements, please skip the step accordingly.
 
 ## 1. Install Docker
 
 Docker is an open-source project that automates the deployment of software applications inside containers by providing an additional layer of abstraction and automation of OS-level virtualization on Linux.
 
-![Windows](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/windows32.png?raw=true) : To install on **windows** please use the following installer [Docker Dekstop for Windows Installer](https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe)
+![Windows](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/windows32.png?raw=true) : To install on **windows** please use the following installer [Docker Dekstop for Windows Installer](https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe) **NOTICE** that docker can't be installed on some types of Windows distributions like Win10 Home Edition due to virtualisation limitation of this edition. If you can't install docker on your windows computer, please use a linux virtual machine and follow along the linux steps of the workshop.
 
-![osx](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/mac32.png?raw=true) : To install on **MAC OS**  use [Docker Dekstop for MAC Installer](https://download.docker.com/mac/stable/Docker.dmg) or [homebrew](https://docs.brew.sh/Installation) with following commands:
+![osx](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/mac32.png?raw=true) : To install on **MAC OS**  use [Docker Dekstop for MAC Installer](https://download.docker.com/mac/stable/Docker.dmg) or [homebrew](https://docs.brew.sh/Installation) with following commands:
 ```bash
 # Fetch latest version of homebrew and formula.
 brew update              
@@ -31,7 +29,7 @@ brew cleanup
 docker -v
 ```
 
-![linux](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/linux32.png?raw=true) : To install on linux (centOS) you can use the following commands
+![linux](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/linux32.png?raw=true) : If you are using linux, we expect you to be able to install docker on your own. Here is the example for centOS/RedHat-based systems:
 ```bash
 # Remove if already install
 sudo yum remove docker \
@@ -54,14 +52,13 @@ sudo systemctl enable --now docker
 # Get Status
 systemctl status  docker
 
-# Logout....Lougin
+# Logout....Login
 exit
 # Create user
 sudo usermod -aG docker $USER
 newgrp docker
 
 # Validation
-docker images
 docker run hello-world
 docker -v
 ```
@@ -70,11 +67,11 @@ docker -v
 
 Docker Compose is a tool for defining and running multi-container Docker applications. It uses YAML files to configure the application's services and performs the creation and start-up process of all the containers with a single command. The `docker-compose` CLI utility allows users to run commands on multiple containers at once, for example, building images, scaling containers, running containers that were stopped, and more. Please refer to [Reference Documentation](https://docs.docker.com/compose/install/) if you have for more detailed instructions.
 
-![Windows](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/windows32.png?raw=true) : Already **included** in the previous package *Docker for Windows*
+![Windows](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/windows32.png?raw=true) : Already **included** in the previous package *Docker for Windows*
 
-![osx](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/mac32.png?raw=true) : Already **included** in the previous package *Docker for Mac*
+![osx](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/mac32.png?raw=true) : Already **included** in the previous package *Docker for Mac*
 
-![linux](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/linux32.png?raw=true) : To install on linux (centOS) you can use the following commands
+![linux](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/linux32.png?raw=true) : To install on linux (centOS) you can use the following commands
 
 ```bash
 # Download deliverable and move to target location
@@ -88,14 +85,14 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 The Kubernetes command-line tool, `kubectl`, allows you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs. Please refer to [Reference Documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) for more detailed instructions.
 
-![Windows](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/windows32.png?raw=true) : To install on **windows** please use the following installer [Kubectl for Windows](https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/windows/amd64/kubectl.exe)
+![Windows](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/windows32.png?raw=true) : To install on **windows** please use the following installer [Kubectl for Windows](https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/windows/amd64/kubectl.exe)
 
-![osx](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/mac32.png?raw=true) : To install on **MAC OS** please use the following [homebrew](https://docs.brew.sh/Installation) commands:
+![osx](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/mac32.png?raw=true) : To install on **MAC OS** please use the following [homebrew](https://docs.brew.sh/Installation) commands:
 ```bash
 brew install kubectl
 ```
 
-![linux](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/linux32.png?raw=true) To install on linux (centOS) you can use the following commands. 
+![linux](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/linux32.png?raw=true) To install on linux (centOS) you can use the following commands. 
 
 *If the binary not working for your linux distribution you have more download urls in the [KUBETCTL DOCUMENTATION](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux)*.
 
@@ -117,7 +114,7 @@ kubectl version --client
 
 During the workshop some bootstrap can last for a few minutes and the utilty `watch` can come to he rescue to avoid typing the same command multiple times to see the evolutions.
 
-![Windows](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/windows32.png?raw=true) : The utility does not exist on **windows** but this is quite easy to create your own `watch.bat` file containing :
+![Windows](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/windows32.png?raw=true) : The utility does not exist on **windows** but this is quite easy to create your own `watch.bat` file containing :
 ```bash
 @ECHO OFF
 :loop
@@ -127,33 +124,32 @@ During the workshop some bootstrap can last for a few minutes and the utilty `wa
 goto loop
 ```
 
-![osx](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/mac32.png?raw=true) : To install on **MAC OS** please use the following [homebrew](https://docs.brew.sh/Installation) commands:
+![osx](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/mac32.png?raw=true) : To install on **MAC OS** please use the following [homebrew](https://docs.brew.sh/Installation) commands:
 ```bash
 brew install watch
 ```
 
-![linux](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/linux32.png?raw=true) the utility is already installed in **centOS**
+![linux](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/linux32.png?raw=true) the utility is already installed in **centOS**
 
 ```bash
 echo "Linux Rocks"
 ```
 
-
 ## 5. Install Kind
 
 kind (`kind`)cis a tool for running local Kubernetes clusters using Docker container “nodes”. kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI. Please refer to [Reference Documentation](https://kind.sigs.k8s.io/docs/user/quick-start/) for more detailed instructions.
 
-![Windows](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/windows32.png?raw=true) : To install on **windows** please dowmload the [executable](https://kind.sigs.k8s.io/dl/v0.7.0/kind-windows-amd64) and place it on the PATH. You can also use **[Chocolatey](https://chocolatey.org/packages/kind)** very clever package manager for windows.
+![Windows](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/windows32.png?raw=true) : To install on **windows** please dowmload the [executable](https://kind.sigs.k8s.io/dl/v0.7.0/kind-windows-amd64) and place it on the PATH. You can also use **[Chocolatey](https://chocolatey.org/packages/kind)** very clever package manager for windows.
 ```bash
 choco install kind
 ```
 
-![osx](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/mac32.png?raw=true) : To install on **MAC OS** please use the following [homebrew](https://docs.brew.sh/Installation) commands:
+![osx](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/mac32.png?raw=true) : To install on **MAC OS** please use the following [homebrew](https://docs.brew.sh/Installation) commands:
 ```bash
 brew install kind
 ```
 
-![linux](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/linux32.png?raw=true) To install on linux (centOS) you can use the following commands
+![linux](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/linux32.png?raw=true) To install on linux (centOS) you can use the following commands
 ```bash
 curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v0.7.0/kind-$(uname)-amd64
 chmod +x ./kind
@@ -298,7 +294,7 @@ volumeBindingMode: WaitForFirstConsumer
 📘 **7d. Execute the following command to create a new `storageClass` named `server-storage`**
 For the rest of this guide, we would assume you have defined a `StorageClass` and named it `server-storage`. 
 ```bash
-kubectl -n cass-operator apply -f ./0-setup-your-cluster/02-storageclass-kind.yaml
+kubectl -n cass-operator apply -f ./0-setup-your-cluster-own/02-storageclass-kind.yaml
 ```
 
 📘 **7e. Execute the following command to list the storageClass**
@@ -312,7 +308,6 @@ server-storage (default)   rancher.io/local-path   Delete          WaitForFirstC
 standard (default)         rancher.io/local-path   Delete          WaitForFirstConsumer   false                  88m
 ```
 
-## Congratulations, your are done for this exercise.
+## Congratulations, your are done with the prerequisites.
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/4-materials/images/welldone.jpg?raw=true)
-
+Please proceed to [the next step](../1-cassandra/README.MD)!

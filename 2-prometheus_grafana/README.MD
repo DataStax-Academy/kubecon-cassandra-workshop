@@ -1,4 +1,4 @@
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/3-materials/images/00-screenplay.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/00-screenplay.png?raw=true)
 
 # Monitor a Cluster
 

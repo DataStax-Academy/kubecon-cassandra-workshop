@@ -9,11 +9,11 @@ In this repository, you'll find everything for the Cassandra Kubernetes Workshop
 
 Feel free to bookmark this page for future reference!
 
-## Available Materials
+## Materials and Communications
 
-| Title  | Description
-|---|---|
-| **Slides** | [PRESENTATION](3-materials/presentation.pdf) |
+* [Presentation](3-materials/presentation.pdf)
+* [Discord chat](https://bit.ly/cassandra-workshop)
+* [Q&A: community.datastax.com](https://community.datastax.com)
 
 ## Exercises
 

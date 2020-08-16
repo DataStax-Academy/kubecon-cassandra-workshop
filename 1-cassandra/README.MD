@@ -20,7 +20,7 @@ Generally, `cluster-admin` privileges are required to register a CustomResourceD
 📘 **1a. Apply the manifest**
 Apply the manifest above, and wait for the deployment to become ready. You can watch the progress by getting the list of pods for the namespace, as demonstrated below:
 ```bash
-kubectl -n cass-operator apply -f ./1-cassandra/11-install-cass-operator-v1.1.yaml
+kubectl -n cass-operator apply -f ./1-cassandra/11-install-cass-operator-v1.3.yaml
 ```
 📗 **Expected output**
 ```bash
@@ -904,6 +904,8 @@ Events:
 
 ## Congratulations, your are done for this exercise.
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/3-materials/images/welldone.jpg?raw=true)
+Please proceed to [the next step](../2-prometheus_grafana/README.MD)!
+
+![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/welldone.jpg?raw=true)
 
 

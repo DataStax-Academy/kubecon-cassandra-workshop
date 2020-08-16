@@ -129,7 +129,7 @@ goto loop
 brew install watch
 ```
 
-![linux](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/linux32.png?raw=true) the utility is already installed in **centOS**
+![linux](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/linux32.png?raw=true) the utility is already installed (depending on your distribution)
 
 ```bash
 echo "Linux Rocks"
@@ -137,9 +137,9 @@ echo "Linux Rocks"
 
 ## 5. Install Kind
 
-kind (`kind`)cis a tool for running local Kubernetes clusters using Docker container “nodes”. kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI. Please refer to [Reference Documentation](https://kind.sigs.k8s.io/docs/user/quick-start/) for more detailed instructions.
+kind (`kind`) is a tool for running local Kubernetes clusters using Docker container “nodes”. kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI. Please refer to [Reference Documentation](https://kind.sigs.k8s.io/docs/user/quick-start/) for more detailed instructions.
 
-![Windows](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/windows32.png?raw=true) : To install on **windows** please dowmload the [executable](https://kind.sigs.k8s.io/dl/v0.7.0/kind-windows-amd64) and place it on the PATH. You can also use **[Chocolatey](https://chocolatey.org/packages/kind)** very clever package manager for windows.
+![Windows](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/windows32.png?raw=true) : To install on **windows** please dowmload the [executable](https://kind.sigs.k8s.io/dl/v0.8.1/kind-windows-amd64) and place it on the PATH. You can also use **[Chocolatey](https://chocolatey.org/packages/kind)** very clever package manager for windows.
 ```bash
 choco install kind
 ```
@@ -151,7 +151,7 @@ brew install kind
 
 ![linux](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/linux32.png?raw=true) To install on linux (centOS) you can use the following commands
 ```bash
-curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v0.7.0/kind-$(uname)-amd64
+curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v0.8.1/kind-$(uname)-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 ```
@@ -175,7 +175,7 @@ During this workshop we will work with a cluster with multiple Cassandra nodes. 
 
 📘 **6a. Execute the following command to create a kubernetes cluster**
 ```bash
-kind create cluster --name kind-cassandra --config ./0-setup-your-cluster/01-kind-config.yaml
+kind create cluster --name kind-cassandra --config ./0-setup-your-cluster-own/01-kind-config.yaml
 ```
 
 📗 **Expected output**

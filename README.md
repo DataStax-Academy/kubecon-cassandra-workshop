@@ -20,7 +20,7 @@ Feel free to bookmark this page for future reference!
 To follow along with the hands-on exercises during the workshop, you need to have a docker-ready machine with at least a 4-core + 8 GB RAM. **KubeCon attendees can request a training cloud instance** using [this link](https://kubecon2020.datastaxtraining.com/). Notice that training cloud instances will be available only during the workshop and to be terminated 24 hours later.
 
 * If you are using **your own computer** or your own cloud node, please check the requirements and install the missing tools as explained [here](./0-setup-your-cluster-own).
-* If you are using **a cloud training instance** provided by DataStax, relax as we have you covered: prerequisites are installed already. Please do the very last steps as explain [there](./0-setup-your-cluster-datastax)
+* If you are using **a cloud training instance** provided by DataStax, relax as we have you covered: prerequisites are installed already. Please do the very last steps as explained [there](./0-setup-your-cluster-datastax)
 
 | Title  | Description
 |---|---|

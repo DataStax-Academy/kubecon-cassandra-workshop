@@ -7,7 +7,7 @@ To practice kubernetes we need kubernetes, but it's a complex distributed system
 
 *"kind is a tool for running local Kubernetes clusters using Docker container "nodes". Kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI. Please refer to [Reference Documentation](https://kind.sigs.k8s.io/docs/user/quick-start/) for more detailed instructions."*
 
-To make workshop as simple and useful as possible for you, we prepared a special cloud training instance you should have received already. It's a linux-based virtual instance running in AWS with all the prerequisites installed:
+To make the workshop simple and useful for you, we prepared a special cloud training instance you should have received already. It's a linux-based virtual instance running in AWS with all the prerequisites installed:
 
 * Docker (Docker is an open-source project that automates the deployment of software applications inside containers by providing an additional layer of abstraction and automation of OS-level virtualization on Linux.)
 * Docker Compose (Docker Compose is a tool for defining and running multi-container Docker applications. It uses YAML files to configure the application's services and performs the creation and start-up process of all the containers with a single command. The docker-compose CLI utility allows users to run commands on multiple containers at once, for example, building images, scaling containers, running containers that were stopped, and more.)

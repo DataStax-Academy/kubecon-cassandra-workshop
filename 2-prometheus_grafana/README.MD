@@ -343,9 +343,10 @@ kind delete cluster --name=kind-cassandra
 
 ## Congratulations, your are done.
 
-**More questions? Join us!**
+**Questions or ideas? Reach us here:**
 
 * [Discord chat](https://bit.ly/cassandra-workshop)
 * [Q&A: community.datastax.com](https://community.datastax.com)
+* [More Workshops!](https://www.youtube.com/datastaxdevs)
 
 ![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/welldone.jpg?raw=true)

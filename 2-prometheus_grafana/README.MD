@@ -54,7 +54,8 @@ echo $namespace
 
 📘 **2b.Install OLM**
 ```bash
-./3-prometheus_grafana/install-olm.sh 0.14.1
+./2-prometheus_grafana/install-olm.sh 0.15.1
+#curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/0.15.1/install.sh | bash -s 0.15.1
 ```
 📗 **Expected output**
 ```
@@ -95,17 +96,17 @@ The Prometheus Operator makes the Prometheus configuration Kubernetes native and
 📘 **3a. Install Operator**
 
 ```bash
-kubectl -n cass-operator create -f ./3-prometheus_grafana/prometheus/operator.yaml
+kubectl -n cass-operator create -f ./2-prometheus_grafana/prometheus/operator.yaml
 ```
 
 📘 **3b. Install the instance of prometheus**
 ```
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/prometheus/instance.yaml
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/prometheus/instance.yaml
 ```
 
 📘 **3c. Install Service Monitor**
 ```
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/prometheus/service_monitor.yaml
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/prometheus/service_monitor.yaml
 ```
 
 
@@ -119,27 +120,27 @@ A Kubernetes Operator based on the Operator SDK for creating and managing Grafan
 
 📘 **4a. Install Operator**
 ```bash
-kubectl -n cass-operator create -f ./3-prometheus_grafana/grafana/operator.yaml
+kubectl -n cass-operator create -f ./2-prometheus_grafana/grafana/operator.yaml
 ```
 
 📘 **4b.Install DataSource to read from prometheus**
 ```bash
-kubectl -n cass-operator create -f ./3-prometheus_grafana/grafana/datasource.yaml
+kubectl -n cass-operator create -f ./2-prometheus_grafana/grafana/datasource.yaml
 ```
 
 📘 **4c.Install dashboards for DSE and prometheus**
 ```bash
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/grafana/dse-analytics.dashboard.yaml
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/grafana/dse-cluster-condensed.dashboard.yaml
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/grafana/dse-cluster-metrics.dashboard.yaml
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/grafana/dse-search-cluster.dashboard.yaml 
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/grafana/prometheus-metrics.dashboard.yaml 
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/grafana/system-metrics.dashboard.yaml
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/grafana/dse-analytics.dashboard.yaml
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/grafana/dse-cluster-condensed.dashboard.yaml
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/grafana/dse-cluster-metrics.dashboard.yaml
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/grafana/dse-search-cluster.dashboard.yaml 
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/grafana/prometheus-metrics.dashboard.yaml 
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/grafana/system-metrics.dashboard.yaml
 ```
 
 📘 **4d.Install Grafana instance**
 ```bash
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/grafana/instance.yaml
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/grafana/instance.yaml
 ```
 
 📘 **4e. Show labels in the namespace**
@@ -176,7 +177,7 @@ This could be quite CPU consuming reduce the size of the cluster to `1` if you i
 
 
 ```bash
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/dse/dse-mini.yaml
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/dse/dse-mini.yaml
 ```
 
 📘 **5b.Watch evolution it might need some time**
@@ -273,7 +274,7 @@ If you show UI from grafana and prometheus you might notice than the screens are
 
 📘 **7a. Apply this configuration**
 ```bash
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/dse/dse-mini-enablemetrics.yaml
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/dse/dse-mini-enablemetrics.yaml
 ```
 
 📘 **7b. Apply this configuration**
@@ -290,15 +291,15 @@ You can navigate to `Status` dropdown in the topbar and select `target` to see t
 
 - The cluster is detected but nodes are not sending metrics yet:
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/3-materials/images/prometheus-target-empty.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/prometheus-target-empty.png?raw=true)
 
 - Let the party begin
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/3-materials/images/prometheus-target-up.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/prometheus-target-up.png?raw=true)
 
 - You can now graph some metrics withing prometheus 
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/3-materials/images/prometheus-graph-up.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/prometheus-graph-up.png?raw=true)
 
 📘 **7d. Grafana UI**
 
@@ -306,15 +307,15 @@ Grafana should be available at `http://localhost:3000` but it mays vary on the c
 
 - Metrics starting to pull to Grafana
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/3-materials/images/grafana-starting.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/grafana-starting.png?raw=true)
 
 - After a bit of time
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/3-materials/images/grafana-jvm.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/grafana-jvm.png?raw=true)
 
 - You can browse dashboards there are a lot, here is the JVM. Only the dashboards using the datasource we created before will have data. The one starting with `dse`.
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/3-materials/images/grafana-up.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/grafana-up.png?raw=true)
 
 ## 8. Stop and clean up
 
@@ -322,13 +323,13 @@ As before you may want to stop the cluster properly and then stop everything els
 
 ## 8a. Stop the DSE cluster properly
 ```bash
-kubectl -n cass-operator apply -f ./3-prometheus_grafana/dse/dse-mini-stop.yaml
+kubectl -n cass-operator apply -f ./2-prometheus_grafana/dse/dse-mini-stop.yaml
 ```
 
 ## 8b. Delete resources associated
 
 ```bash
-kubectl -n cass-operator delete -f ./3-prometheus_grafana/dse/dse-mini-stop.yaml
+kubectl -n cass-operator delete -f ./2-prometheus_grafana/dse/dse-mini-stop.yaml
 ```
 
 ## 8c. Delete the namespace and clean up the rest of the artifacts

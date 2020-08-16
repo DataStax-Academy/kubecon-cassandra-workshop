@@ -2,11 +2,11 @@
 
 # Monitor a Cluster
 
-At this point we expect you to have successfully complete section #0 and section #1. Section #2 is all about visualization and optional.
+At this point we expect you to have successfully complete section #0 and section #1.
 
 ## 1. Clean up cluster defined in previous sections
 
-In this section we want to illustrate the `Dse Metrics Exporter`. As such we would need to run a cluster of DataStax Enterprise nodes and not Cassandra OSS node (yet). We will clean up the `dc1` we created in previous section. In the CRD there is a property named `stopped` to set to true and apply the new yaml, that's it.
+In this section we want to illustrate the `DSE Metrics Exporter` and `MCAC` - 'Metrics Collector for Apache Cassandra'. As such we would need to run a cluster of DataStax Enterprise nodes and not Cassandra OSS node (yet). We will clean up the `dc1` we created in previous section. In the CRD there is a property named `stopped` to set to true and apply the new yaml, that's it.
 
 📘 **1a. Check what's new in the yaml file**
 ```bash
@@ -108,7 +108,6 @@ kubectl -n cass-operator apply -f ./2-prometheus_grafana/prometheus/instance.yam
 ```
 kubectl -n cass-operator apply -f ./2-prometheus_grafana/prometheus/service_monitor.yaml
 ```
-
 
 ## 4. Install Grafana Operator
 
@@ -291,15 +290,15 @@ You can navigate to `Status` dropdown in the topbar and select `target` to see t
 
 - The cluster is detected but nodes are not sending metrics yet:
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/prometheus-target-empty.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/prometheus-target-empty.png?raw=true)
 
 - Let the party begin
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/prometheus-target-up.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/prometheus-target-up.png?raw=true)
 
 - You can now graph some metrics withing prometheus 
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/prometheus-graph-up.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/prometheus-graph-up.png?raw=true)
 
 📘 **7d. Grafana UI**
 
@@ -307,15 +306,15 @@ Grafana should be available at `http://localhost:3000` but it mays vary on the c
 
 - Metrics starting to pull to Grafana
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/grafana-starting.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/grafana-starting.png?raw=true)
 
 - After a bit of time
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/grafana-jvm.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/grafana-jvm.png?raw=true)
 
 - You can browse dashboards there are a lot, here is the JVM. Only the dashboards using the datasource we created before will have data. The one starting with `dse`.
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/2-materials/images/grafana-up.png?raw=true)
+![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/grafana-up.png?raw=true)
 
 ## 8. Stop and clean up
 
@@ -339,11 +338,11 @@ kubectl delete ns cass-operator
 
 ## 8d. Delete the kub cluster
 ```bash
-kind delete cluster  --name=kind-cassandra
+kind delete cluster --name=kind-cassandra
 ```
 
 ## Congratulations, your are done.
 
 **We love your feedback, please consider to stay with us for the Mentimeter live survey**
 
-![OK](https://github.com/DataStax-Academy/kubernetes-workshop-online/blob/master/3-materials/images/welldone.jpg?raw=true)
+![OK](https://github.com/DataStax-Academy/kubecon-cassandra-workshop/blob/master/3-materials/images/welldone.jpg?raw=true)

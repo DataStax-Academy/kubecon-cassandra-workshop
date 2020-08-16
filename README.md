@@ -11,6 +11,7 @@ Feel free to bookmark this page for future reference!
 
 ## Materials and Communications
 
+* [Workshop recording](https://youtu.be/nRf2M4OjGpU)
 * [Presentation](3-materials/presentation.pdf)
 * [Discord chat](https://bit.ly/cassandra-workshop)
 * [Q&A: community.datastax.com](https://community.datastax.com)

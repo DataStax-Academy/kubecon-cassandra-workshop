@@ -410,18 +410,12 @@ INSERT INTO killrvideo1.videos (videoid, name, description, added_date)
 
 INSERT INTO killrvideo1.users (userid, created_date, firstname, lastname, email)
   VALUES(11111111-1111-1111-1111-111111111111, toTimestamp(now()), 'Jeffrey', 'Carpenter', 'jc@datastax.com');
-//INSERT INTO killrvideo.user_credentials (userid, email, password)
-//  VALUES(11111111-1111-1111-1111-111111111111, 'jc@datastax.com', 'J3ffL0v3$C@ss@ndr@');
   
 INSERT INTO killrvideo1.users (userid, created_date, firstname, lastname, email)
   VALUES(22222222-2222-2222-2222-222222222222, toTimestamp(now()), 'Eric', 'Zietlow', 'ez@datastax.com');
-//INSERT INTO killrvideo.user_credentials (userid, email, password)
-//  VALUES(22222222-2222-2222-2222-222222222222, 'ez@datastax.com', 'C@ss@ndr@R0ck$');
 
 INSERT INTO killrvideo1.users (userid, created_date, firstname, lastname, email)
   VALUES(33333333-3333-3333-3333-333333333333, toTimestamp(now()), 'Cedrick', 'Lunven', 'cl@datastax.com');
-//INSERT INTO killrvideo.user_credentials (userid, email, password)
-//  VALUES(33333333-3333-3333-3333-333333333333, 'cl@datastax.com', 'Fr@nc3L0v3$C@ss@ndr@');
 ```
 
 📘 **3j. Show the `users` tables**
